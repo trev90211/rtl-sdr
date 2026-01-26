@@ -114,6 +114,7 @@ jobs:
 
     - name: List rtlsdr 2
       run: |
+        ls 
         ls -Recurse -Exclude ".git,libusb,pthread-win32,debian"
 
     - name: cmake install
@@ -124,11 +125,15 @@ jobs:
     - name: List
       run: |
           ## cat "${{ github.workspace }}/build/src/cmake_install.cmake"
+          ls -Path "${{ runner.workspace }}"
+          echo "*********************************************"
           ls -Path "${{ github.workspace }}"
           echo "*********************************************"
-          ls -Recurse -Path "${{ github.workspace }}/build"
+          ls  -Path "${{ github.workspace }}/build"
           echo "*********************************************"
-          ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}"
+          ls  -Recurse-Exclude ".git,libusb,pthread-win32,debian" -Path "${{ github.workspace }}/build"
+          echo "*********************************************"
+          ls -Recurse -Exclude ".git,,libusb,pthread-win32,debian,build" -Path "${{ github.workspace }}"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
     
 
