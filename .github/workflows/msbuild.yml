@@ -99,10 +99,10 @@ jobs:
         ## cd ${{github.workspace}}/build
         ls
         cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release `
-              -DLIBUSB_LIBRARIES=${{github.workspace}}/libusb/build/v143/x64/Release/dll/libusb-1.0.lib `
-              -DLIBUSB_INCLUDE_DIRS=${{github.workspace}}/libusb/libusb `
-              -DTHREADS_PTHREADS_INCLUDE_DIR=${{github.workspace}}/pthread-win32 `
-              -DTHREADS_PTHREADS_LIBRARY=${{github.workspace}}/pthread-win32/shared/lib/pthreadVC3.lib 
+              -DLIBUSB_LIBRARIES=libusb/build/v143/x64/Release/dll/libusb-1.0.lib `
+              -DLIBUSB_INCLUDE_DIRS=libusb/libusb `
+              -DTHREADS_PTHREADS_INCLUDE_DIR=pthread-win32 `
+              -DTHREADS_PTHREADS_LIBRARY=pthread-win32/shared/lib/pthreadVC3.lib 
 
     - name: List rtlsdr 1
       run: |
