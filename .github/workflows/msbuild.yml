@@ -134,6 +134,8 @@ jobs:
           ls  -Recurse -Exclude ".git,libusb,pthread-win32,debian" -Path "${{ github.workspace }}/build"
           echo "*********************************************"
           ls -Recurse -Exclude ".git,,libusb,pthread-win32,debian,build" -Path "${{ github.workspace }}"
+          cat "${{ github.workspace }}/cmake_install.cmake"
+          cat "${{ github.workspace }}/build/cmake_install.cmake"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
     
 
