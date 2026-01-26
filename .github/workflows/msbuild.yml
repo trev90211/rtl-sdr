@@ -48,11 +48,11 @@ jobs:
           echo "********************************************"
           ls -Path "${{ github.workspace }}"
           echo "********************************************"
-          #ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}/pthread-win32" 
+          #ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}/pthread-win32" 
           #echo "********************************************"
-          #ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}/libusb"
+          #ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}/libusb"
           #echo "********************************************"
-          #ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}"
+          #ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}"
           #echo "********************************************"
     - name: Build pthread-win32
       working-directory: ${{ github.workspace }}
@@ -71,7 +71,7 @@ jobs:
           echo "********************************************"
           ls -Path "${{ github.workspace }}"
           echo "********************************************"
-          ls -Recurse -Exclude ".git" -Path  "${{ github.workspace }}/pthread-win32" 
+          ls -Recurse -Exclude ".git,debian" -Path  "${{ github.workspace }}/pthread-win32" 
         
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
@@ -87,7 +87,7 @@ jobs:
     - name: List libusb
       run: |
           echo "********************************************"
-          ls -Recurse -Exclude ".git"  -Path "${{ github.workspace }}/libusb"
+          ls -Recurse -Exclude ".git,debian"  -Path "${{ github.workspace }}/libusb"
           echo "********************************************"
           cd ..
 
@@ -103,17 +103,17 @@ jobs:
 
     - name: List rtlsdr 1
       run: |
-        ls -Recurse -Exclude ".git,libusb,pthread-win32"
+        ls -Recurse -Exclude ".git,libusb,pthread-win32,debian"
         ## cd ..
 
     - name: cmake 
       run: |
-        cmake --build build --parallel 2 --config Release
+        cmake --build build --config Release --target install
         echo "*********************************************"
 
     - name: List rtlsdr 2
       run: |
-        ls -Recurse -Exclude ".git,libusb,pthread-win32"
+        ls -Recurse -Exclude ".git,libusb,pthread-win32,debian"
 
     - name: cmake install
       run: |
@@ -127,7 +127,7 @@ jobs:
           echo "*********************************************"
           ls -Recurse -Path "${{ github.workspace }}/build"
           echo "*********************************************"
-          ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}"
+          ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
     
 
