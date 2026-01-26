@@ -122,10 +122,11 @@ jobs:
           ls -Path "${{ github.workspace }}"
           ls -Recurse -Path "${{ github.workspace }}/build"
           ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}"
+          echo "***************"
           cat "${{ runner.workspace }}/cmake_install.cmake"
-          cat "****************"
+          echo "****************"
           cat "${{ runner.workspace }}/cmake_install.cmake"
-          cat "*********"
+          echo "******************"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
     
 
