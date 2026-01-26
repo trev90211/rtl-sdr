@@ -108,7 +108,7 @@ jobs:
 
     - name: cmake 
       run: |
-        cmake --build build --config Release --target install
+        cmake --build build --config Release --target "librtlsdr,rtl_sdr,rtl_adsb,rtl_fm,rtl_power"
         echo "*********************************************"
 
     - name: List rtlsdr 2
