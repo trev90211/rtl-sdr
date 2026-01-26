@@ -108,7 +108,8 @@ jobs:
 
     - name: cmake 
       run: |
-        cmake --build build --config Release --target "install"
+        cd build
+        cmake --build . --config Release --target "install"
         echo "*********************************************"
 
     - name: List rtlsdr 2
@@ -117,7 +118,7 @@ jobs:
 
     - name: cmake install
       run: |
-        cmake --install build --prefix dist
+        cmake --install bu.ild --prefix dist
         ###echo "* ${{github.workspace}} : `git show --format='%h (%s, %as)' --no-patch`" >> ${{github.workspace}}/release_notes.md
 
     - name: List
