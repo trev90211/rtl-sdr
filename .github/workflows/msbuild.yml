@@ -118,7 +118,7 @@ jobs:
 
     - name: cmake install
       run: |
-        cmake --install bu.ild --prefix dist
+        cmake --install . --prefix dist
         ###echo "* ${{github.workspace}} : `git show --format='%h (%s, %as)' --no-patch`" >> ${{github.workspace}}/release_notes.md
 
     - name: List
