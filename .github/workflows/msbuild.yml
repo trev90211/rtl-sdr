@@ -67,11 +67,11 @@ jobs:
     - name: List pthread
       run: |
           echo "********************************************"
-          ls ".git" 
+          ls 
           echo "********************************************"
-          ls -Recurse -Exclude ".git" -Path  "${{ github.workspace }}/pthread-win32"
+          ls -Path "${{ github.workspace }}"
           echo "********************************************"
-          ls -Path "${{ github.workspace }}" 
+          ls -Recurse -Exclude ".git" -Path  "${{ github.workspace }}/pthread-win32" 
         
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
@@ -106,13 +106,20 @@ jobs:
 
     - name: List rtlsdr 1
       run: |
-        ls -Recurse
+        ls -Recurse -Exclude ".git" -Exclude "libusb" -Exclude "pthread-win32"
         ## cd ..
 
     - name: cmake 
       run: |
-        cmake --build build --parallel 1 --config Release
+        cmake --build build --parallel 2 --config Release
         echo "*********************************************"
+
+    - name: List rtlsdr 2
+      run: |
+        ls -Recurse -Exclude ".git" -Exclude "libusb" -Exclude "pthread-win32"
+
+    - name: cmake install
+      run: |
         cmake --install build --prefix ${{github.workspace}}/dist --config Release
         ###echo "* ${{github.workspace}} : `git show --format='%h (%s, %as)' --no-patch`" >> ${{github.workspace}}/release_notes.md
 
@@ -120,7 +127,9 @@ jobs:
       run: |
           ## cat "${{ github.workspace }}/build/src/cmake_install.cmake"
           ls -Path "${{ github.workspace }}"
+          echo "*********************************************"
           ls -Recurse -Path "${{ github.workspace }}/build"
+          echo "*********************************************"
           ls -Recurse -Exclude ".git" -Path "${{ github.workspace }}"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
     
