@@ -99,7 +99,7 @@ jobs:
         mkdir ${{github.workspace}}/build
         ## cd ${{github.workspace}}/build
         ls
-        cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release --fresh
+        cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release --fresh --target "librtlsdr,rtl_sdr,rtl_adsb,rtl_fm,rtl_power"
 
     - name: List rtlsdr 1
       run: |
