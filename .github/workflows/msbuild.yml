@@ -99,11 +99,11 @@ jobs:
         mkdir ${{github.workspace}}/build
         ## cd ${{github.workspace}}/build
         ls
-        cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release
+        cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release --fresh
 
     - name: List rtlsdr 1
       run: |
-        ls -Recurse -Exclude ".git" -Exclude "libusb" -Exclude "pthread-win32"
+        ls -Recurse -Exclude ".git,libusb,pthread-win32"
         ## cd ..
 
     - name: cmake 
@@ -113,7 +113,7 @@ jobs:
 
     - name: List rtlsdr 2
       run: |
-        ls -Recurse -Exclude ".git" -Exclude "libusb" -Exclude "pthread-win32"
+        ls -Recurse -Exclude ".git,libusb,pthread-win32"
 
     - name: cmake install
       run: |
