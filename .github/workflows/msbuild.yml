@@ -91,8 +91,6 @@ jobs:
           echo "********************************************"
           cd ..
 
-
-
     - name: RTL-SDR configure build
       working-directory: ${{github.workspace}}
       run: |
@@ -133,10 +131,15 @@ jobs:
           echo "*********************************************"
           ls  -Recurse -Exclude ".git,libusb,pthread-win32,debian" -Path "${{ github.workspace }}/build"
           echo "*********************************************"
+          echo "*********************************************"
           ls -Recurse -Exclude ".git,,libusb,pthread-win32,debian,build" -Path "${{ github.workspace }}"
+          echo "*********************************************"
           cat "${{ github.workspace }}/cmake_install.cmake"
+          echo "*********************************************"
           cat "${{ github.workspace }}/build/cmake_install.cmake"
+          echo "*********************************************"
           cat "${{ github.workspace }}/build\src\rtlsdr.vcxproj"
+          echo "*********************************************"
     
 
     #- name: Dir Listing
