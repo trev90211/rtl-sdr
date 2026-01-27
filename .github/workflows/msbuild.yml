@@ -97,7 +97,7 @@ jobs:
         mkdir ${{github.workspace}}/build
         ## cd ${{github.workspace}}/build
         ls
-        cmake -B build -S . -A x64 -DCMAKE_BUILD_TYPE=Release --fresh 
+        cmake -B build_rtl-sdr -S . -A x64 -DCMAKE_BUILD_TYPE=Release --fresh 
 
     - name: List rtlsdr 1
       run: |
@@ -106,8 +106,8 @@ jobs:
 
     - name: cmake 
       run: |
-        cd build
-        cmake --build . --config Release --target "rtl-sdr"
+        ## cd build
+        cmake --build build_rtl-sdr --config Release --target "rtl-sdr"
         echo "*********************************************"
 
     - name: List rtlsdr 2
@@ -117,7 +117,7 @@ jobs:
 
     - name: cmake install
       run: |
-        cmake --install build --prefix dist
+        cmake --install build_rtl-sdr --prefix dist
         ###echo "* ${{github.workspace}} : `git show --format='%h (%s, %as)' --no-patch`" >> ${{github.workspace}}/release_notes.md
 
     - name: List
