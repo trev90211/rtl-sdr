@@ -107,7 +107,7 @@ jobs:
     - name: cmake 
       run: |
         ## cd build
-        cmake --build build_rtl-sdr --config Release 
+        cmake --build build_rtl-sdr --config Release  --target "rtl_sdr,rtl_power"
         echo "*********************************************"
 
     - name: List rtlsdr 2
@@ -117,7 +117,7 @@ jobs:
 
     - name: cmake install
       run: |
-        cmake --install build_rtl-sdr --prefix dist --target "rtl_sdr,rtl_power"
+        cmake --install build_rtl-sdr --prefix dist --verbose
         ###echo "* ${{github.workspace}} : `git show --format='%h (%s, %as)' --no-patch`" >> ${{github.workspace}}/release_notes.md
 
     - name: List
