@@ -174,8 +174,9 @@ jobs:
             dist/lib/rtlsdr.lib
             dist/bin
             dist/include
-            ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/** .exe
+            ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*.exe
             ${{ runner.workspace }}/pthread-win32/shared/bin
+
 
 
 
