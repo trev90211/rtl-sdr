@@ -54,6 +54,7 @@ jobs:
           #echo "********************************************"
           #ls -Recurse -Exclude ".git,debian" -Path "${{ github.workspace }}"
           #echo "********************************************"
+          
     - name: Build pthread-win32
       working-directory: ${{ github.workspace }}
       run: |
@@ -64,6 +65,7 @@ jobs:
           cmake --build shared `
                 --config Release `
                 --target install
+                
     - name: List pthread
       run: |
           echo "********************************************"
@@ -83,6 +85,9 @@ jobs:
                 /m `
                 -property:Configuration=Release `
                 -property:Platform=x64
+          cmake --build shared `
+                --config Release `
+                --target install
 
     - name: List libusb
       run: |
