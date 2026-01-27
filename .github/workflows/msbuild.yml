@@ -85,7 +85,7 @@ jobs:
                 /m `
                 -property:Configuration=Release `
                 -property:Platform=x64
-          cmake --build shared `
+          cmake --build . `
                 --config Release `
                 --target install
 
