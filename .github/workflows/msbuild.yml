@@ -85,9 +85,9 @@ jobs:
                 /m `
                 -property:Configuration=Release `
                 -property:Platform=x64
-          cmake --build . `
-                --config Release `
-                --target install
+          ## cmake --build . `
+          ##      --config Release `
+          ##      --target install
 
     - name: List libusb
       run: |
