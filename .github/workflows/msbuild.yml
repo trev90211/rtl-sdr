@@ -80,7 +80,7 @@ jobs:
       working-directory: ${{github.workspace}}/libusb
       run: |
           msbuild msvc/libusb.sln `
-                /m x64 `
+                /m `
                 -property:Configuration=Release `
                 -property:Platform=x64  --target "libusb"
 
