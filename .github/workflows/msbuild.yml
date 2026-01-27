@@ -107,7 +107,7 @@ jobs:
     - name: cmake 
       run: |
         ## cd build
-        cmake --build build_rtl-sdr --config Release --target "rtl-sdr"
+        cmake --build build_rtl-sdr --config Release 
         echo "*********************************************"
 
     - name: List rtlsdr 2
