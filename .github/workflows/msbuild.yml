@@ -82,7 +82,7 @@ jobs:
           msbuild msvc/libusb.sln `
                 /m x64 `
                 -property:Configuration=Release `
-                -property:Platform=x64  --target "librtlsdr,rtl_sdr,rtl_adsb,rtl_fm,rtl_power"
+                -property:Platform=x64  --target "libusb"
 
     - name: List libusb
       run: |
