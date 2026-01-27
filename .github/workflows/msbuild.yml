@@ -161,7 +161,7 @@ jobs:
       shell: bash
       run: |
         #cp "${{ runner.workspace }}/pthread-win32/shared/Release/*" dist/bin
-        #cp "${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*" dist/bin
+        cp "${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*" dist/bin
         #cp "${{github.workspace}}/ExtIO_RTL/README.md" ./
         #cp "${{github.workspace}}/ExtIO_RTL/COPYING" ./LICENSE
         7z a dist.zip dist/lib/rtlsdr.lib dist/bin dist/include 
