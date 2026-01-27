@@ -1,4 +1,4 @@
-name: msbuild 
+name: msbuild v2
 
 on:
   workflow_dispatch:
@@ -162,14 +162,12 @@ jobs:
       run: |
         #cp "${{github.workspace}}/ExtIO_RTL/README.md" ./
         #cp "${{github.workspace}}/ExtIO_RTL/COPYING" ./LICENSE
-        cp "${{github.workspace}}/Release/*" ./
+        7z a dist.zip dist/bin dist.lib dist.include
 
     - name: package and upload
       uses: actions/upload-artifact@v4
       with:
-        name: librtlsdr
+        name: dist
         path: |
-            ${{github.workspace}}/ExtIO_RTL.dll
-            ${{github.workspace}}/README.md
-            ${{github.workspace}}/LICENSE
+            dist.zip
 
