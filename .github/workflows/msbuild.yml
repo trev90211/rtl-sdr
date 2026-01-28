@@ -160,18 +160,16 @@ jobs:
       working-directory: ${{github.workspace}}
     #  shell: bash
       run: |
-        # cp "${{ runner.workspace }}/pthread-win32/shared/bin/*" dist/bin
-        # cp "${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*" dist/bin
+        cp   ${{ runner.workspace }}/pthread-win32/shared/bin/*  dist/bin
+        cp   ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*.dll dist/bin
         # cp "${{github.workspace}}/ExtIO_RTL/README.md" ./
         # cp "${{github.workspace}}/ExtIO_RTL/COPYING" ./LICENSE
-        cp   ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*.dll dist/bin
-        cp   ${{ runner.workspace }}/pthread-win32/shared/bin/*  dist/bin
 
 
     - name: package and upload
       uses: actions/upload-artifact@v4
       with:
-        name: dist
+        name: osmocom_rtl-sdr_dist
         path: |
             dist/lib/rtlsdr.lib
             dist/bin
