@@ -165,7 +165,7 @@ jobs:
         # cp "${{github.workspace}}/ExtIO_RTL/README.md" ./
         # cp "${{github.workspace}}/ExtIO_RTL/COPYING" ./LICENSE
         cp   ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*.dll dist/bin
-        cp   ${{ runner.workspace }}/pthread-win32/shared/bin  dist/bin
+        cp   ${{ runner.workspace }}/pthread-win32/shared/bin/*  dist/bin
 
 
     - name: package and upload
@@ -178,6 +178,7 @@ jobs:
             dist/include
             # ${{ runner.workspace }}/libusb/build/v143/x64/Release/dll/*.dll
             # ${{ runner.workspace }}/pthread-win32/shared/bin
+
 
 
 
