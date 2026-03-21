@@ -33,7 +33,7 @@ jobs:
 
 
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 2
 
@@ -76,7 +76,7 @@ jobs:
           ls -Recurse -Exclude ".git,debian" -Path  "${{ runner.workspace }}/pthread-win32" 
         
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v3
 
     - name: libusb Configure Visual Studio and CMake
       working-directory: ${{runner.workspace}}/libusb
@@ -167,7 +167,7 @@ jobs:
 
 
     - name: package and upload
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: osmocom_rtl-sdr_dist
         path: |
