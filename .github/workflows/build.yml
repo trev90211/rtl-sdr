@@ -1,5 +1,3 @@
-
-
 name: C/C++ CI
 on:
   workflow_dispatch:
@@ -26,4 +24,39 @@ jobs:
         run: sudo apt -qq update && sudo apt -yqq install libusb-1.0-0-dev
       - name: cmake_make
         run: mkdir build && cmake -S . -B build && cd build && make
+      - name: compress
+        run: |
+          tar zcvf librtlsdr_build_${{ matrix.os }}.tar.gz \
+          --directory=build/src \
+          --exclude=CMakeFiles \
+          --exclude=*.cmake \
+          --exclude=Makefile \
+          --exclude=rtl_app_ver.h .
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.os }}_latest_build
+          path: librtlsdr_build_${{ matrix.os }}.tar.gz
+          
+  build_macos:
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - macos-15-intel
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: cmake_make
+        run: mkdir build && cmake -S . -B build && cd build && make
+      - name: compress
+        run: |
+          tar zcvf librtlsdr_build_${{ matrix.os }}.tar.gz --directory=build/src \
+          --exclude=CMakeFiles --exclude=*.cmake --exclude=Makefile \
+          --exclude=rtl_app_ver.h .
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.os }}_latest_build
+          path: librtlsdr_build_${{ matrix.os }}.tar.gz
         
