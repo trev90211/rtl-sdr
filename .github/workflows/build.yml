@@ -73,7 +73,8 @@ jobs:
         run: |
           sudo apt -qq update && sudo apt -yqq install gcc-mingw-w64 \
           mingw-w64-i686-dev mingw-w64-x86-64-dev mingw-w64-tools \
-          mingw-w64-common libpthread-stubs0-dev libusb-dev libusb-1.0-0-dev 
+          mingw-w64-common libpthread-stubs0-dev libusb-dev libusb-1.0-0-dev \
+          mingw64-gcc mingw64-binutils mingw64-libusbx
           sudo find / -name '*pthread*'
           sudo find / -name 'libusb*' 
       - name: cmake_make
