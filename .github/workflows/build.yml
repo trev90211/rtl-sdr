@@ -1,0 +1,29 @@
+
+
+name: C/C++ CI
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - docs/**
+      - bin/**
+  pull_request:
+    paths-ignore:
+      - docs/**
+      - bin/**
+jobs:
+  build_linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: prerequisites
+        run: sudo apt -qq update && sudo apt -yqq install libusb-1.0-0-dev
+      - name: cmake_make
+        run: mkdir build && cmake -S . -B build && cd build && make
+        
