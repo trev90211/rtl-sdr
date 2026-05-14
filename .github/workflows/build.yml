@@ -60,3 +60,21 @@ jobs:
           name: ${{ matrix.os }}_latest_build
           path: librtlsdr_build_${{ matrix.os }}.tar.gz
         
+  cross_build_win32_win64_latest:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    env:
+      THREADS_USE_PTHREADS_WIN32: true
+      CMAKE_FIND_DEBUG_MODE: TRUE
+    steps:
+      - uses: actions/checkout@v6
+      - name: prerequisites
+        run: |
+          sudo apt -qq update && sudo apt -yqq install gcc-mingw-w64 \
+          mingw-w64-i686-dev mingw-w64-x86-64-dev mingw-w64-tools \
+          mingw-w64-common libpthread-stubs0-dev libusb-dev libusb-1.0-0-dev 
+          sudo find / -name '*pthread*'
+          sudo find / -name 'libusb*' 
+      - name: cmake_make
+        run: mkdir build && cd build && mingw64-cmake .. && mingw64-make install
