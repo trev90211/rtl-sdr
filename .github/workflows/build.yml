@@ -77,4 +77,6 @@ jobs:
           sudo find / -name '*pthread*'
           sudo find / -name 'libusb*' 
       - name: cmake_make
-        run: mkdir build && cd build && mingw-w64-cmake .. && mingw-w64-make install
+        run: mkdir build && cd build && \
+            cmake .. -DCMAKE_TOOLCHAIN_FILE=${REPO_DIR}/mingw-w64-x64_64.cmake && \
+            make install
