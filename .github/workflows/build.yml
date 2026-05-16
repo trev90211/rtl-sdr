@@ -80,6 +80,9 @@ jobs:
       - name: cmake_make
         run: |
           mkdir build
-          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=mingw-w64-x64_64.cmake 
+          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=mingw-w64-x64_64.cmake \
+          -DLIBUSB_INCLUDE_DIR=${REPO_DIR}/mingw_libusb_${WN}/include/libusb-1.0 \
+          -DLIBUSB_LIBRARIES=${REPO_DIR}/mingw_libusb_${WN}/lib/libusb-1.0.a \
+          -DLIBUSB_LINK_LIBRARIES=${REPO_DIR}/mingw_libusb_${WN}/lib/libusb-1.0.a 
           cd build
           make install
