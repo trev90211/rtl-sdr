@@ -219,3 +219,9 @@ install(
 ########################################################################
 MESSAGE(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 MESSAGE(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
+
+get_cmake_property(variable_names VARIABLES)
+list(SORT variable_names)
+foreach (variable_name ${variable_names})
+    message(STATUS "${variable_name}=${${variable_name}}")
+endforeach ()
