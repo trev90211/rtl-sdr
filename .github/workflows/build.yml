@@ -86,6 +86,6 @@ jobs:
           -DLIBUSB_LINK_LIBRARIES=${REPO_DIR}/mingw_libusb_${WN}/lib/libusb-1.0.a 
           cd build
           make install
-      - name: check
-        if: ${{ failure() 
-        run: 
+      #- name: check
+      #  if: ${{ failure() 
+      #  run: 
